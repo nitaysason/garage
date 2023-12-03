@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: hsl(133, 8%, 65%);
+            color: #111401;
+            text-align: center;
+       
+        }
+
+        button {
+            background-color: rgb(36, 235, 235);
+            margin: 20px;
+            height: 30px;
+        }
+
+        input {
+            background-color: rgb(136, 155, 190);
+            width: 200px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <button onclick=" cars()">Add car</button>
+
+    <br>
+    munyfacture : <br> <input id="munyfacture">
+    <br>
+    color : <br> <input id="color">
+    <br>
+    modle : <br> <input id="modle">
+    <div id="carlist"></div>
+    <div id="counter"></div>
+    <button onclick="removeLastCar()">ClearLastCar</button>
+    <button onclick="RemoveAllCar()">RemoveAllCars</button>
+
+    <script>
+        let garage = []
+
+        function cars() {
+            garage.push({ "munyfacture": munyfacture.value, "color": color.value, "modle": modle.value })
+            counter.innerHTML = garage.length
+            carlist.innerHTML = garage.map(car => `<div>
+                color : ${car.color},
+                modle : ${car.modle},
+                munyfacture : ${car.munyfacture}
+                <img src  = "https://fastly.picsum.photos/id/133/2742/1828.jpg?hmac=0X5o8bHUICkOIvZHtykCRL50Bjn1N8w1AvkenF7n93E" width = "50px">
+                <button> buy </button>
+            </div>`).join("")
+
+
+        }
+
+        function removeLastCar() {
+
+            garage.pop();
+            console.log(garage);
+            carlist.innerHTML = garage.length
+            counter.innerHTML = garage.length
+        }
+
+        function RemoveAllCar() {
+            garage.splice(garage);
+            console.log("no cars");
+            carlist.innerHTML = ("No cars");
+            counter.innerHTML = garage.length
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
